@@ -1,6 +1,13 @@
 import React, { Component } from "react";
-
-export default class FormQuanLyNguoiDung extends Component {
+import {connect} from 'react-redux';
+class FormQuanLyNguoiDung extends Component {
+  showUserTypes = () => {
+    return this.props.userTypes.map((userType, index) => {
+      return (
+        <option value="KhachHang" key={index}>{userType.loai}</option>
+      )
+    })
+  }
   render() {
     return (
       <form>
@@ -43,7 +50,7 @@ export default class FormQuanLyNguoiDung extends Component {
             <div className="form-group">
               <label>Mã loại người dùng</label>
               <select className="form-control">
-                <option value="KhachHang">Khách Hàng</option>
+                {this.showUserTypes()}
               </select>
             </div>
           </div>
@@ -54,3 +61,9 @@ export default class FormQuanLyNguoiDung extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    userTypes: state.QuanLyNguoiDungReducer.userTypes
+  }
+}
+export default connect(mapStateToProps)(FormQuanLyNguoiDung);

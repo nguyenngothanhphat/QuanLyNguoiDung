@@ -1,6 +1,25 @@
 import React, { Component } from "react";
-
-export default class ViewQuanLyNguoiDung extends Component {
+import { connect } from "react-redux";
+class ViewQuanLyNguoiDung extends Component {
+  showUsers = () => {
+    return this.props.listUsers.map((user, index) => {
+      return (
+        <tr key={index}>
+          <td>{user.stt}</td>
+          <td>{user.taiKhoan}</td>
+          <td>{user.hoTen}</td>
+          <td>{user.matKhau}</td>
+          <td>{user.email}</td>
+          <td>{user.soDienThoai}</td>
+          <td>{user.loaiNguoiDung}</td>
+          <td>
+            <button className="btn btn-primary mr-2">Chỉnh sửa</button>
+            <button className="btn btn-danger">Xóa</button>
+          </td>
+        </tr>
+      );
+    });
+  };
   render() {
     return (
       <table class="table table-striped table-inverse">
@@ -17,21 +36,16 @@ export default class ViewQuanLyNguoiDung extends Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>lethituyet</td>
-            <td>Lê Thị Tuyết</td>
-            <td>12345</td>
-            <td>tuyet@gmail.com</td>
-            <td>0954545421</td>
-            <td>KhachHang</td>
-            <td>
-              <button className="btn btn-primary mr-2">Chỉnh sửa</button>
-              <button className="btn btn-danger">Xóa</button>
-            </td>
-          </tr>
+          {this.showUsers()}
         </tbody>
       </table>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    listUsers: state.QuanLyNguoiDungReducer.listUsers,
+  };
+};
+export default connect(mapStateToProps)(ViewQuanLyNguoiDung);
