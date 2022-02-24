@@ -13,7 +13,7 @@ class FormQuanLyNguoiDung extends Component {
   showUserTypes = () => {
     return this.props.userTypes.map((userType, index) => {
       return (
-        <option value="KhachHang" key={index}>{userType.loai}</option>
+        <option value={userType.loai} key={index}>{userType.loai}</option>
       )
     })
   }
@@ -28,7 +28,7 @@ class FormQuanLyNguoiDung extends Component {
     this.props.dispatch(addUserAction(this.state))
   }
   handleUpdate = () => {
-    
+
   }
   render() {
     return (
@@ -71,7 +71,7 @@ class FormQuanLyNguoiDung extends Component {
           <div className="col-6">
             <div className="form-group">
               <label>Mã loại người dùng</label>
-              <select name="loaiNguoiDung" className="form-control">
+              <select name="loaiNguoiDung" className="form-control" onChange={this.handleChange}>
                 {this.showUserTypes()}
               </select>
             </div>
