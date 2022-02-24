@@ -22,8 +22,8 @@ class ViewQuanLyNguoiDung extends Component {
   };
   render() {
     return (
-      <table class="table table-striped table-inverse">
-        <thead class="thead-inverse">
+      <table className="table table-striped table-inverse">
+        <thead className="thead-inverse">
           <tr>
             <th>STT</th>
             <th>Tài khoản</th>

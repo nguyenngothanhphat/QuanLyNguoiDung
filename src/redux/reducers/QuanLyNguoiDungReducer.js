@@ -1,3 +1,5 @@
+import { ADD_USER } from "../types/QuanLyNguoiDungTypes";
+
 const initialState = {
   listUsers: [
     {stt: 1, taiKhoan: 'lethituyet', hoTen: 'Lê Thị Tuyết', matKhau: '12345', email: 'tuyet@gmail.com', soDienThoai: '0943212321', loaiNguoiDung: 'KhachHang'},
@@ -12,6 +14,10 @@ const initialState = {
 
 const QuanLyNguoiDungReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_USER: {
+      console.log("User test", action.user);
+      return {...state}
+    }
     default:
       return { ...state };
   }
